@@ -32,7 +32,7 @@ pipeline {
         always {
 
             echo 'AheadOfSimpleWeb One way or another, I have finished'
-           
+        }   
         success {
             echo 'AheadOfSimpleWeb I succeeeded!'
         }
