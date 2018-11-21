@@ -26,8 +26,13 @@ pipeline {
                 sh 'mvn -v'
             //    build 'SimpleWeb'
             //    build job: 'SimpleWeb', propagate: false
-                  build job: 'SimpleWeb', parameters: [string(name: 'DEPLOY_ENV', value: 'testing')]
+             //     build job: 'SimpleWeb', parameters: [string(name: 'DEPLOY_ENV', value: 'testing')]
              //   build job: 'SimpleWeb', parameters: [string(name: 'DEPLOY_ENV', value: 'testing')], propagate: false, wait: false
+                script{
+                    def  returnVal =   build job: 'SimpleWeb', parameters: [string(name: 'DEPLOY_ENV', value: 'testing')], propagate: false
+                    echo "${returnVal.displayName}"   
+                    echo "${returnVal.result}"   
+                }    
                 echo 'AheadOfSimpleWeb Building success'
             }
         }
