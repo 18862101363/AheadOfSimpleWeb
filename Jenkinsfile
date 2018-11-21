@@ -24,7 +24,8 @@ pipeline {
             steps {
                 echo 'AheadOfSimpleWeb Building'
                 sh 'mvn -v'
-          
+                build 'SimpleWeb'
+                echo 'AheadOfSimpleWeb Building success'
             }
         }
     }
@@ -35,6 +36,7 @@ pipeline {
         }   
         success {
             echo 'AheadOfSimpleWeb I succeeeded!'
+            
         }
         unstable {
             echo 'AheadOfSimpleWeb I am unstable :/'
