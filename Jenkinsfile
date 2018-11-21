@@ -26,7 +26,8 @@ pipeline {
                 sh 'mvn -v'
             //    build 'SimpleWeb'
             //    build job: 'SimpleWeb', propagate: false
-                build job: 'SimpleWeb', propagate: false, wait: false
+            //    build job: 'SimpleWeb', propagate: false, wait: false
+                build job: 'SimpleWeb', parameters: [string(name: 'DEPLOY_ENV', value: 'testing')], propagate: false, wait: false
                 echo 'AheadOfSimpleWeb Building success'
             }
         }
