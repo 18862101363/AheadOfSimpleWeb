@@ -24,7 +24,8 @@ pipeline {
             steps {
                 echo 'AheadOfSimpleWeb Building'
                 sh 'mvn -v'
-                build 'SimpleWeb'
+            //    build 'SimpleWeb'
+                build job: 'SimpleWeb', propagate: false
                 echo 'AheadOfSimpleWeb Building success'
             }
         }
