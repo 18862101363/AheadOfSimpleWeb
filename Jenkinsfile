@@ -34,11 +34,11 @@ pipeline {
 //		wait如果设置为false，那么当前构建就不阻塞，触发构建另一个任务后，并继续执行自己的step或stage。另外，如果另一个任务构建stage块中有input块，那么要我们自己手动点击另一个任务，不然会一直阻塞
 //propagate 选项，当wait设置为false，该 propagate配置失效。只有当wait设置为true, 该 propagate配置才生效。propagate： true 表示，当前构建阻塞等待另一个任务构建结束，如果另一个任务构建结果不为SUCCESS（ABORTED,FAILURE,unstable等）那么当前的构建也会被认为失败。propagate :false 表示，当前构建阻塞等待另一个任务构建结束，另一个任务构建结果不管如果，都不影响当前的构建结果。
 //当 build step 写在 post命令块状态里，如 unstable,success,failure状态块中，propagate, wait 选项设置 false 则达到的效果等同于单独在downstream jenkins 任务中配置的 trigger upstream 
-                script{
-                    def  returnVal =   build job: 'SimpleWeb', parameters: [string(name: 'DEPLOY_ENV', value: 'testing')], propagate: false
-                    echo "${returnVal.displayName}"   
-                    echo "${returnVal.result}"   
-                }  
+              //  script{
+              //      def  returnVal =   build job: 'SimpleWeb', parameters: [string(name: 'DEPLOY_ENV', value: 'testing')], propagate: false
+              //      echo "${returnVal.displayName}"   
+              //      echo "${returnVal.result}"   
+              //  }  
 //trigger 指令块，和 build step 在jenkins 任务构建，upstream任务构建的console out 中看到当前任务触发downstream任务构建。而downstream任务构建console out开头则显示当前任务被哪一个upstream任务触发而构建，如：
 // upstream AheadOfSimpleWeb:
 //    Scheduling project: SimpleWeb
