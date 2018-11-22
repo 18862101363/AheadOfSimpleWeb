@@ -38,7 +38,17 @@ pipeline {
                     def  returnVal =   build job: 'SimpleWeb', parameters: [string(name: 'DEPLOY_ENV', value: 'testing')], propagate: false
                     echo "${returnVal.displayName}"   
                     echo "${returnVal.result}"   
-                }    
+                }  
+//trigger 指令块，和 build step 在jenkins 任务构建，upstream任务构建的console out 中看到当前任务触发downstream任务构建。而downstream任务构建console out开头则显示当前任务被哪一个upstream任务触发而构建，如：
+// upstream AheadOfSimpleWeb:
+//    Scheduling project: SimpleWeb
+//    Starting building: SimpleWeb #91
+//    或
+//    Triggering a new build of SimpleWeb #91
+// downstream SimpleWeb:
+    //Started by upstream project "AheadOfSimpleWeb" build number 15   
+                
+                
                 echo 'AheadOfSimpleWeb Building success'
             }
         }
