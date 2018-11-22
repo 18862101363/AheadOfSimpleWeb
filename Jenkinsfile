@@ -60,7 +60,7 @@ pipeline {
         }   
         success {
             echo 'AheadOfSimpleWeb I succeeeded!'
-            
+            build job: 'SimpleWeb', parameters: [string(name: 'DEPLOY_ENV', value: 'testing')], propagate: false, wait: false
         }
         unstable {
             echo 'AheadOfSimpleWeb I am unstable :/'
