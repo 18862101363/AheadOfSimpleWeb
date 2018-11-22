@@ -31,9 +31,9 @@ pipeline {
                 
 //build step 可以指定构建其他的jenkins任务，如果指定的任务是参数化的，则需要配置相应的参数值。
 // wait 选项是在触发构建另一个jenkins任务，当前构建是否需要等待那个任务执行完毕。如果是 true , 那当前构建就阻塞等待那个任务执行完，再执行当前任务的下面step或 stage，并且会返回那个任务构建的结果对象，通过该对象，可以获取到 类似于 currentBuild 对象的属性
-//		wait如果设置为false，那么当前构建就不阻塞，触发构建另一个任务后，并继续执行自己的step或stage
+//		wait如果设置为false，那么当前构建就不阻塞，触发构建另一个任务后，并继续执行自己的step或stage。另外，如果另一个任务构建stage块中有input块，那么要我们自己手动点击另一个任务，不然会一直阻塞
 //propagate 选项，当wait设置为false，该 propagate配置失效。只有当wait设置为true, 该 propagate配置才生效。propagate： true 表示，当前构建阻塞等待另一个任务构建结束，如果另一个任务构建结果不为SUCCESS（ABORTED,FAILURE,unstable等）那么当前的构建也会被认为失败。propagate :false 表示，当前构建阻塞等待另一个任务构建结束，另一个任务构建结果不管如果，都不影响当前的构建结果。
-//当 build step 写在 post命令块状态里，如 unstable,success,failure状态块中，propagate, wait 选项设置 false 则达到的效果则等同于单独在downstream jenkins 任务中配置的 trigger upstream 
+//当 build step 写在 post命令块状态里，如 unstable,success,failure状态块中，propagate, wait 选项设置 false 则达到的效果等同于单独在downstream jenkins 任务中配置的 trigger upstream 
                 script{
                     def  returnVal =   build job: 'SimpleWeb', parameters: [string(name: 'DEPLOY_ENV', value: 'testing')], propagate: false
                     echo "${returnVal.displayName}"   
