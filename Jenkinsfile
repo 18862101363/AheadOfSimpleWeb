@@ -3,7 +3,7 @@ pipeline {
     //agent any // agent 指示 Jenkins 为整个 Pipeline 分配执行程序（在 Jenkins 环境中的任何可用代理/节点上）和工作空间
 
     parameters {
-        choice choices: ['testing', 'production'], description: '选择测试（10.80.121.35）还是生产（10.80.121.36）环境进行发布', name: 'DEPLOY_ENV'
+        choice choices: ['testing', 'production'], description: '选择测试（ip）还是生产（ip）环境进行发布', name: 'DEPLOY_ENV'
     }
     agent {
         label params.DEPLOY_ENV
